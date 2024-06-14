@@ -1,0 +1,7 @@
+.container {
+        border: 5px solid #0e0d0d; /* Border around the container */
+        padding: 20px; /* Padding inside the container */
+        border-radius: 100px; /* Rounded corners for the container */
+        background-color: #e4e5eee3; /* Optional background color */
+      }
+

@@ -1,0 +1,57 @@
+
+<div class="container">
+
+    
+    <div class="row justify-content-center">
+      
+    <div class="col-md-6">
+      <h1>Meeting Form</h1>
+    <form (ngSubmit)="onSubmit()" #meetingForm="ngForm">
+        <div class="mb-3">
+            <label for="topic" class="form-label">Meeting Topic</label>
+            <input type="text" class="form-control" id="topic"
+            [(ngModel)]="model.topic" name="topic" required #topic="ngModel">
+              <!-- <div>Topic is Required</div>   -->
+              <div class="alert alert-danger" role="alert" [hidden]="topic.valid || topic.pristine">
+                Meeting topic is Required!
+              </div>
+          </div>
+        <div class="mb-3">
+          <label for="noOfPeople" class="form-label">Number of People</label>
+          <input type="number" class="form-control" id="noOfPeople" [(ngModel)]="model.numberOfPeople" name="noOfPeople" required #noOfPeople="ngModel">
+          <div class="alert alert-danger" role="alert" [hidden]="noOfPeople.valid || noOfPeople.pristine">
+            noOfPeople is Required!
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="datetime" class="form-label">Start Time</label>
+          <input type="datetime-local" class="form-control" id="datetime"
+          [(ngModel)]="model.startTime" name="datetime" required #datetime="ngModel">
+            <!-- <div>Start Time is Required</div>   -->
+            <div class="alert alert-danger" role="alert" [hidden]="datetime.valid || datetime.pristine">
+              Start Time is Required!
+            </div>
+        </div>
+       
+        <button type="submit" class="btn btn-success" [disabled]="!meetingForm.form.valid">Submit</button>
+
+        <div *ngIf="submitted" class="stylesubmit" >
+          <h2>The following Meeting Schedule has been created</h2>
+            <p>Meeting Topic : {{ model.topic }}</p>
+              <p>Number Of People : {{ model.numberOfPeople }}</p>
+              <p>Start Time : {{ model.startTime }}</p>                            
+            <input type="button" value="Create a Meeting" (click)="submitted=false">      
+        </div>
+      </form>
+    </div>
+
+  </div>
+    </div>
+    
+    <div *ngIf="submitted" class="stylesubmit" >
+      <h2>The following Meeting Schedule has been created</h2>
+        <p>Meeting Topic : {{ model.topic }}</p>
+          <p>Number Of People : {{ model.numberOfPeople }}</p>
+          <p>Start Time : {{ model.startTime }}</p>                            
+        <input type="button" value="Create a Meeting" (click)="submitted=false">      
+    </div>
